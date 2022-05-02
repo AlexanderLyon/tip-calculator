@@ -1,0 +1,37 @@
+.a-btn {
+  padding: 5px 10px;
+  width: 100%;
+  height: $input-height;
+  font-size: 20px;
+  font-weight: bold;
+  color: $white;
+  background-color: $cyan-100;
+  transition: background-color 200ms;
+  border: none;
+  border-radius: $input-border-radius;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $cyan-100;
+    background-color: $cyan-40;
+  }
+
+  &--selected {
+    color: $cyan-100;
+    background-color: $cyan-primary;
+  }
+
+  &--primary {
+    color: $cyan-100;
+    background-color: $cyan-primary;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus {
+      color: $cyan-100;
+      background-color: $cyan-40;
+    }
+  }
+}
