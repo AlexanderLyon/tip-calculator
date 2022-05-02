@@ -1,0 +1,35 @@
+.a-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  input[type='text'],
+  input[type='number'] {
+    padding: 5px 20px 5px 30px;
+    width: 100%;
+    height: $input-height;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    border: 2px solid $cyan-20;
+    border-radius: $input-border-radius;
+    background-color: $cyan-20;
+
+    &:focus {
+      outline: none;
+      border-color: $cyan-primary;
+    }
+
+    &::placeholder {
+      color: $cyan-40;
+    }
+  }
+
+  &--icon {
+    position: absolute;
+    left: 10px;
+    width: 12px;
+    max-height: 20px;
+    pointer-events: none;
+  }
+}
