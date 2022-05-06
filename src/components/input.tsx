@@ -1,17 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface IInput {
-  type: string;
+  type: 'text' | 'number';
+  isCurrency?: boolean;
   placeholder?: string;
+  defaultValue?: string | number;
   icon?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (val?: string | number) => any;
 }
 
-export const Input: React.FC<IInput> = ({ type, placeholder, icon, onChange }) => {
+export const Input: React.FC<IInput> = ({ type, isCurrency, placeholder, defaultValue, icon, onChange }) => {
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(value);
+    }
+  }, [value]);
+
   return (
     <span className="a-input">
       {icon ? <img className="a-input--icon" src={icon} alt="icon" /> : null}
-      <input type={type} placeholder={placeholder} onChange={onChange} />
+      <input
+        type={type}
+        value={value}
+        min={type === 'number' ? 0 : ''}
+        placeholder={placeholder}
+        onClick={(e) => {
+          e.currentTarget.select();
+        }}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={(e) => {
+          if (isCurrency) {
+            setValue(Number(e.target.value).toFixed(2));
+          }
+        }}
+      />
     </span>
   );
 };
