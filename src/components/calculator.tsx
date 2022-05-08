@@ -6,9 +6,15 @@ import dollarIcon from '../../images/icon-dollar.svg';
 import personIcon from '../../images/icon-person.svg';
 
 export const Calculator: React.FC = () => {
-  const [totalBill, setTotalBill] = useState<number>(0);
-  const [tipPercentage, setTipPercentage] = useState<number>(0);
-  const [numberOfPeople, setNumberOfPeople] = useState<number>(0);
+  const initialValues = {
+    totalBill: '0.00',
+    tipPercentage: 0,
+    numberOfPeople: 1,
+  };
+
+  const [totalBill, setTotalBill] = useState<string>(initialValues.totalBill);
+  const [tipPercentage, setTipPercentage] = useState<number>(initialValues.tipPercentage);
+  const [numberOfPeople, setNumberOfPeople] = useState<number>(initialValues.numberOfPeople);
 
   const formatMoney = (amount: number): string => {
     const options = {
@@ -22,12 +28,12 @@ export const Calculator: React.FC = () => {
   };
 
   const calculateTipPerPerson = () => {
-    const amount = (totalBill * (tipPercentage / 100)) / numberOfPeople;
+    const amount = (Number(totalBill) * (Number(tipPercentage) / 100)) / Number(numberOfPeople);
     return formatMoney(amount);
   };
 
   const calculateTotalPerPerson = () => {
-    const amount = (totalBill * (1 + tipPercentage / 100)) / numberOfPeople;
+    const amount = (Number(totalBill) * (1 + Number(tipPercentage) / 100)) / Number(numberOfPeople);
     return formatMoney(amount);
   };
 
@@ -41,18 +47,23 @@ export const Calculator: React.FC = () => {
           <h4>Bill</h4>
           <Input
             type="number"
-            isCurrency
-            defaultValue={(0.0).toFixed(2)}
+            value={totalBill}
             placeholder="0.00"
             icon={dollarIcon}
-            onChange={(val) => setTotalBill(Number(val))}
+            onChange={(val) => setTotalBill(val)}
+            onBlur={(val) => setTotalBill(Number(val).toFixed(2))}
           />
         </section>
         <section>
           <h4>Select Tip %</h4>
           <ButtonGroup
-            onChange={(value) => {
-              setTipPercentage(value);
+            value={tipPercentage}
+            onChange={(val) => {
+              if (val === tipPercentage) {
+                setTipPercentage(initialValues.tipPercentage);
+              } else {
+                setTipPercentage(val);
+              }
             }}
           >
             <Button value="5">5%</Button>
@@ -67,8 +78,9 @@ export const Calculator: React.FC = () => {
           <h4>Number of People</h4>
           <Input
             type="number"
-            defaultValue={1}
-            placeholder="0"
+            value={numberOfPeople}
+            minimum={1}
+            placeholder="1"
             icon={personIcon}
             onChange={(val) => setNumberOfPeople(Number(val))}
           />
