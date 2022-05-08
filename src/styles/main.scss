@@ -6,7 +6,12 @@
 
 * {
   font-family: 'Space Mono', monospace;
+  color: $cyan-100;
   box-sizing: border-box;
+}
+
+a {
+  color: $cyan-primary;
 }
 
 body {
@@ -37,11 +42,21 @@ body {
   }
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
+section:not(:first-child) {
+  margin-top: 35px;
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
+h1 {
+  color: $cyan-primary;
+}
+
+h4 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.attribution {
+  margin: 10px 0;
+  font-size: 11px;
+  text-align: center;
 }
