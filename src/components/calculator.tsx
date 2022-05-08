@@ -40,6 +40,14 @@ export const Calculator: React.FC = () => {
   const tipPerPerson = calculateTipPerPerson();
   const totalPerPerson = calculateTotalPerPerson();
 
+  const resetValues = () => {
+    if (confirm('Are you sure you want to reset all fields?')) {
+      setTotalBill(initialValues.totalBill);
+      setTipPercentage(initialValues.tipPercentage);
+      setNumberOfPeople(initialValues.numberOfPeople);
+    }
+  };
+
   return (
     <div className="tip-calculator">
       <div className="tip-calculator--controls">
@@ -101,7 +109,9 @@ export const Calculator: React.FC = () => {
           </div>
           <h1>{totalPerPerson}</h1>
         </div>
-        <Button primary>Reset</Button>
+        <Button primary onClick={resetValues}>
+          Reset
+        </Button>
       </div>
     </div>
   );
