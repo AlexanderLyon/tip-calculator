@@ -33,4 +33,12 @@
     max-height: 20px;
     pointer-events: none;
   }
+
+  &--selected {
+    input[type='text'],
+    input[type='number'] {
+      color: $cyan-100;
+      background-color: $cyan-primary;
+    }
+  }
 }

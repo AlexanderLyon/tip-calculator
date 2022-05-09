@@ -15,6 +15,7 @@ export const Calculator: React.FC = () => {
   const [totalBill, setTotalBill] = useState<string>(initialValues.totalBill);
   const [tipPercentage, setTipPercentage] = useState<number>(initialValues.tipPercentage);
   const [numberOfPeople, setNumberOfPeople] = useState<number>(initialValues.numberOfPeople);
+  const [customTipAmount, setCustomTipAmount] = useState<number | ''>('');
 
   const formatMoney = (amount: number): string => {
     const options = {
@@ -45,6 +46,7 @@ export const Calculator: React.FC = () => {
       setTotalBill(initialValues.totalBill);
       setTipPercentage(initialValues.tipPercentage);
       setNumberOfPeople(initialValues.numberOfPeople);
+      setCustomTipAmount('');
     }
   };
 
@@ -79,7 +81,16 @@ export const Calculator: React.FC = () => {
             <Button value="15">15%</Button>
             <Button value="25">25%</Button>
             <Button value="50">50%</Button>
-            <Input type="text" placeholder="Custom" />
+            <Input
+              type="number"
+              value={customTipAmount}
+              minimum={0}
+              placeholder="Custom"
+              onChange={(val) => {
+                setCustomTipAmount(Number(val));
+                setTipPercentage(Number(val));
+              }}
+            />
           </ButtonGroup>
         </section>
         <section>
