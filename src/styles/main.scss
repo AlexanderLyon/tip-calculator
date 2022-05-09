@@ -48,6 +48,11 @@ section:not(:first-child) {
 
 h1 {
   color: $cyan-primary;
+  font-size: 36px;
+
+  @media (max-width: $screen-mobile) {
+    font-size: 26px;
+  }
 }
 
 h4 {
