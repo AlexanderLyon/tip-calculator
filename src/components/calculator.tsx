@@ -102,6 +102,7 @@ export const Calculator: React.FC = () => {
             placeholder="1"
             icon={personIcon}
             onChange={(val) => setNumberOfPeople(Number(val))}
+            errorMessage={numberOfPeople === 0 ? "Can't be zero" : null}
           />
         </section>
       </div>

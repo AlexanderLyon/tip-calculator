@@ -41,4 +41,20 @@
       background-color: $cyan-primary;
     }
   }
+
+  &--error {
+    input[type='text'],
+    input[type='number'] {
+      border-color: $error-color;
+    }
+
+    &-message {
+      position: absolute;
+      top: -30px;
+      right: 0;
+      font-size: 12px;
+      color: $error-color;
+      background-color: $white;
+    }
+  }
 }
