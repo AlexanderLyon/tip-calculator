@@ -8,7 +8,7 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 
 ## Links
 
-- Live Site URL: Coming soon
+- Live Site URL: [https://tip-calculator-alexlyon.vercel.app](https://tip-calculator-alexlyon.vercel.app)
 
 ## Built with
 
