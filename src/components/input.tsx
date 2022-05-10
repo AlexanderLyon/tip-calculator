@@ -6,6 +6,7 @@ interface IInput {
   selected?: boolean;
   minimum?: number;
   placeholder?: string;
+  inputMode?: 'decimal' | 'numeric' | 'text';
   icon?: string;
   errorMessage?: string | null;
   onChange: (val: string) => any;
@@ -18,6 +19,7 @@ export const Input: React.FC<IInput> = ({
   selected,
   minimum,
   placeholder,
+  inputMode,
   icon,
   errorMessage,
   onChange,
@@ -45,6 +47,7 @@ export const Input: React.FC<IInput> = ({
         type={type}
         value={value}
         min={minimum}
+        inputMode={inputMode || 'text'}
         placeholder={placeholder}
         onClick={(e) => {
           e.currentTarget.select();

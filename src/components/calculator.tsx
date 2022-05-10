@@ -59,6 +59,7 @@ export const Calculator: React.FC = () => {
             type="number"
             value={totalBill}
             placeholder="0.00"
+            inputMode="decimal"
             icon={dollarIcon}
             onChange={(val) => setTotalBill(val)}
             onBlur={(val) => setTotalBill(Number(val).toFixed(2))}
@@ -86,6 +87,7 @@ export const Calculator: React.FC = () => {
               value={customTipAmount}
               minimum={0}
               placeholder="Custom"
+              inputMode="numeric"
               onChange={(val) => {
                 setCustomTipAmount(Number(val));
                 setTipPercentage(Number(val));
@@ -100,6 +102,7 @@ export const Calculator: React.FC = () => {
             value={numberOfPeople}
             minimum={1}
             placeholder="1"
+            inputMode="numeric"
             icon={personIcon}
             onChange={(val) => setNumberOfPeople(Number(val))}
             errorMessage={numberOfPeople === 0 ? "Can't be zero" : null}
